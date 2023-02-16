@@ -130,7 +130,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.dehaat'
                 artifactId = 'farmer-kyc'
-                version = '0.0.1'
+                version = '0.0.2'
             }
         }
     }
