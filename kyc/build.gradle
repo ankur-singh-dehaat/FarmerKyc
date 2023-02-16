@@ -1,0 +1,137 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.dehaat.kyc'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.3.2"
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    def appCompat = "1.5.1"
+    def material = "1.7.0"
+    def retrofit = "2.9.0"
+    def okHttp = "4.10.0"
+    def awsVersion = "2.17.1"
+    def awsMobileClient = "2.6.15@aar"
+    def camera = "1.1.0"
+    def kotlinxCoroutines = "1.6.4"
+    def hilt = "2.44.2"
+    def hiltCompiler = "1.0.0"
+    def composeBOM = "2022.11.00"
+    def landscapistGlide = "2.1.0"
+    def composeNavigation = "2.5.3"
+    def composeHiltNavigation = "1.0.0"
+    def activityCompose = "1.6.1"
+    def moshi = "1.14.0"
+    def moshiConverter = "2.9.0"
+    def cleanArchBase = "0.0.2"
+    def androidBase = "v0.0.2-beta-8"
+    def javaxInject = "1"
+    def coreKtx = "1.9.0"
+
+    implementation("androidx.core:core-ktx:$coreKtx")
+    implementation("androidx.appcompat:appcompat:$appCompat")
+    implementation("com.google.android.material:material:$material")
+
+    implementation platform("androidx.compose:compose-bom:$composeBOM")
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.activity:activity-compose:$activityCompose")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material:material")
+
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("androidx.navigation:navigation-compose:$composeNavigation")
+    implementation("androidx.hilt:hilt-navigation-compose:$composeHiltNavigation")
+
+    implementation("javax.inject:javax.inject:$javaxInject")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutines")
+
+    // Networking
+    implementation("com.squareup.retrofit2:retrofit:$retrofit")
+    implementation("com.squareup.retrofit2:converter-moshi:$moshiConverter")
+
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttp")
+    implementation("com.squareup.okhttp3:okhttp:$okHttp")
+
+    implementation("com.squareup.moshi:moshi:$moshi")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi")
+
+    // Dependency Injection
+    implementation("com.google.dagger:hilt-android:$hilt")
+    kapt("com.google.dagger:hilt-compiler:$hilt")
+    kapt("androidx.hilt:hilt-compiler:$hiltCompiler")
+
+    implementation("androidx.camera:camera-core:$camera")
+    implementation("androidx.camera:camera-camera2:$camera")
+    implementation("androidx.camera:camera-lifecycle:$camera")
+    implementation("androidx.camera:camera-view:$camera")
+
+    implementation("com.github.skydoves:landscapist-glide:$landscapistGlide")
+
+    // libraries
+    implementation("com.github.Dehaat:clean-arch-base:$cleanArchBase")
+    implementation("com.github.dehaat:dehaat-android-base:$androidBase")
+
+    //AWS
+    implementation("com.amazonaws:aws-android-sdk-s3:$awsVersion")
+    implementation("com.amazonaws:aws-android-sdk-cognito:$awsVersion")
+    implementation("com.amazonaws:aws-android-sdk-mobile-client:$awsMobileClient") { transitive = true }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.dehaat'
+                artifactId = 'farmer-kyc'
+                version = '0.0.1'
+            }
+        }
+    }
+}

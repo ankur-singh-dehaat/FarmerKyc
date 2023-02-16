@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <application>
+        <activity
+            android:name=".features.bank.KycBankProofActivity"
+            android:exported="false"
+            android:label="@string/add_kyc"
+            android:theme="@style/Theme.KycAppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.idproof.KycIdProofActivity"
+            android:exported="false"
+            android:label="@string/add_kyc"
+            android:theme="@style/Theme.KycAppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.recordsale.KycRecordSaleActivity"
+            android:exported="false"
+            android:label="@string/add_kyc"
+            android:theme="@style/Theme.KycAppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".KycActivity"
+            android:exported="false"
+            android:label="@string/add_kyc"
+            android:theme="@style/Theme.KycAppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+    </application>
+
+</manifest>
