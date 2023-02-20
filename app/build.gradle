@@ -71,5 +71,15 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$hilt")
     kapt("androidx.hilt:hilt-compiler:$hiltCompiler")
 
+    // libraries
+    def cleanArchBase = "0.0.2"
+    def androidBase = "v0.0.2-beta-8"
+    implementation("com.github.Dehaat:clean-arch-base:$cleanArchBase")
+    implementation("com.github.dehaat:dehaat-android-base:$androidBase")
+
+    // Networking
+    def retrofit = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit")
+
     implementation project(":kyc")
 }
